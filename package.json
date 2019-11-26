@@ -1,0 +1,8 @@
+{
+  "name": "errou",
+  "version": "0.0.0-todo",
+  "main": "index.js",
+  "repository": "git@github.com:lffg/errou.git",
+  "author": "Luiz Felipe Gonçalves <https://luizfelipe.dev>",
+  "license": "MIT"
+}
