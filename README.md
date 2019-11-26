@@ -1,6 +1,6 @@
-# `errou`
+# Errou
 
-⚙️ Error utilities module.
+⚙️ Error utilities module &mdash; `errou`.
 
 [![Build Status](https://circleci.com/gh/lffg/errou.svg?style=svg)](https://circleci.com/gh/lffg/errou)
 [![NPM](https://img.shields.io/npm/v/errou.svg?logo=npm)](https://npmjs.org/package/errou)
