@@ -2,8 +2,7 @@
 
 Error handling without `try`/`catch` blocks.
 
-<!-- [![Build Status]()]() -->
-
+[![Actions Status](https://github.com/lffg/errou/workflows/CI/badge.svg)](https://github.com/lffg/errou/actions)
 [![NPM](https://img.shields.io/npm/v/errou.svg?logo=npm)](https://npmjs.org/package/errou)
 ![Uses TypeScript](https://img.shields.io/badge/Uses-Typescript-294E80.svg)
 
