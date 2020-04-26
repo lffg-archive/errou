@@ -18,7 +18,7 @@
     "lint:fix": "yarn lint:raw --ignore-path .gitignore --fix .",
     "lint:raw": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings=0 --ignore-pattern '!.*.*'",
     "test": "jest",
-    "check:ts": "tsc --noEmit",
+    "check:ts": "tsc --noEmit --skipLibCheck",
     "check:all": "yarn lint && yarn check:ts && yarn test",
     "build": "del build && rollup -c",
     "prepublishOnly": "yarn check:all && yarn build"
