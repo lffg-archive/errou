@@ -36,8 +36,14 @@ build/Release
 node_modules/
 jspm_packages/
 
-# Dist:
+# Build and dist and tmp files
+build/
 dist/
+tmp/
+
+# Debug
+__ignore__*
+__old__*
 
 # TypeScript v1 declaration files
 typings/
@@ -54,20 +60,15 @@ typings/
 # Output of 'npm pack'
 *.tgz
 
+# Gatsby cache and Next.js build output
+.cache
+.next
+
 # Yarn Integrity file
 .yarn-integrity
 
-# DotENV environment variables file
+# .env file
 .env
 
 # MacOS .DS_Store
 .DS_Store
-
-# Next.js build output
-.next
-
-# Other files and folders
-tmp
-build
-dist
-__ignore__*
