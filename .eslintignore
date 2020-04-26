@@ -1,6 +1,0 @@
-node_modules
-__ignore__*
-.next
-build
-dist
-*.min.*

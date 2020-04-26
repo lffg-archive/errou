@@ -4,54 +4,52 @@
   "files": [
     "build"
   ],
-  "description": "Error utilities module.",
-  "main": "./build/errou.js",
-  "module": "./build/errou.mjs",
-  "types": "./build/errou.d.ts",
+  "description": "Error handling without try/catch blocks",
+  "main": "build/errou.js",
+  "types": "build/errou.d.ts",
+  "module": "build/errou.mjs",
   "repository": "https://github.com/lffg/errou",
   "author": "Luiz Felipe Gonçalves <https://github.com/lffg>",
   "license": "MIT",
   "scripts": {
-    "format:raw": "prettier --write",
-    "format": "yarn format:raw '**/*.{js,jsx,ts,tsx,json,vue,css,scss,less,graphql,gql,md,mdx,yml,yaml}'",
+    "format:raw": "prettier --write --ignore-path .gitignore",
+    "format": "yarn format:raw '**/*.{json,vue,css,scss,less,graphql,gql,md,mdx,yml,yaml}' && yarn lint:fix",
     "lint": "yarn lint:raw .",
-    "lint:fix": "yarn lint:raw --fix .",
-    "lint:raw": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings=0",
+    "lint:fix": "yarn lint:raw --ignore-path .gitignore --fix .",
+    "lint:raw": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings=0 --ignore-pattern '!.*.*'",
     "test": "jest",
-    "check:ts": "tsc --noEmit --skipLibCheck",
+    "check:ts": "tsc --noEmit",
     "check:all": "yarn lint && yarn check:ts && yarn test",
     "build": "del build && rollup -c",
     "prepublishOnly": "yarn check:all && yarn build"
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^24.0.23",
-    "@types/node": "^12.12.14",
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.4",
     "del-cli": "^3.0.0",
-    "eslint": "6.7.1",
-    "eslint-config-lffg": "^9.0.0",
-    "husky": "^3.1.0",
-    "jest": "^24.9.0",
-    "lint-staged": "^9.4.3",
-    "prettier": "^1.19.1",
-    "rollup": "^1.27.5",
-    "rollup-plugin-typescript2": "^0.25.2",
-    "ts-jest": "^24.2.0",
-    "typescript": "^3.7.2"
+    "eslint": "^6.8.0",
+    "eslint-config-lffg": "^18.0.1",
+    "husky": "^4.2.5",
+    "jest": "^25.4.0",
+    "lint-staged": "^10.1.7",
+    "prettier": "^2.0.5",
+    "rollup": "^2.7.2",
+    "rollup-plugin-typescript2": "^0.27.0",
+    "ts-jest": "^25.4.0",
+    "typescript": "^3.8.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && yarn check:ts && yarn test"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,vue,css,scss,less,graphql,gql,md,mdx,yml,yaml}": [
-      "yarn format:raw",
-      "git add"
+    "*.{json,vue,css,scss,less,graphql,gql,md,mdx,yml,yaml}": [
+      "yarn format:raw"
     ],
     "*.{js,jsx,ts,tsx}": [
-      "yarn lint:raw --ignore-pattern '!.prettierrc.js'",
-      "git add"
+      "yarn lint:raw --fix"
     ]
   },
   "publishConfig": {
