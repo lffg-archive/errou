@@ -1,4 +1,4 @@
-import { errou } from './errou';
+import errou from './errou';
 
 describe('errou', () => {
   describe('when no error is thrown', () => {

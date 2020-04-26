@@ -25,7 +25,7 @@ const notOk = <E>(error: E): NotOk<E> => ({ ok: false, error, data: null });
 // MAIN API
 // ========
 
-export function errou<
+export default function errou<
   E = Error,
   Fn extends FunctionType = FunctionType,
   R = ReturnType<Fn>
