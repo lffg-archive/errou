@@ -26,8 +26,8 @@ const notOk = <E>(error: E): NotOk<E> => ({ ok: false, error, data: null });
 // ========
 
 export default function errou<
-  E = Error,
   Fn extends FunctionType = FunctionType,
+  E = unknown,
   R = ReturnType<Fn>
 >(fn: Fn, ...args: Parameters<Fn>): Result<R, E> {
   try {
