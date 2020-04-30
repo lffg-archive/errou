@@ -19,7 +19,7 @@
     "lint:raw": "eslint --ext .js,.jsx,.ts,.tsx --max-warnings=0 --ignore-path .gitignore --ignore-pattern '!.*.*'",
     "test": "jest",
     "check:ts": "tsc --noEmit --skipLibCheck",
-    "check:all": "yarn lint && yarn check:ts && yarn test",
+    "check:all": "yarn lint && yarn check:ts && yarn test --silent",
     "build": "del build && rollup -c",
     "prepublishOnly": "yarn check:all && yarn build"
   },
