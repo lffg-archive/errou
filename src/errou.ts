@@ -19,8 +19,13 @@ type Result<D extends MaybeUnknownPromise, E> = D extends Promise<any>
 // HELPER FUNCTIONS
 // ================
 
-const ok = <D>(data: D): Ok<D> => ({ ok: true, error: null, data });
-const notOk = <E>(error: E): NotOk<E> => ({ ok: false, error, data: null });
+function ok<D>(data: D): Ok<D> {
+  return { ok: true, error: null, data };
+}
+
+function notOk<E>(error: E): NotOk<E> {
+  return { ok: false, error, data: null };
+}
 
 // MAIN API
 // ========
