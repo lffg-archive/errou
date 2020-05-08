@@ -7,9 +7,9 @@ type Await<T> = T extends Promise<infer U> ? U : T;
 // RESULT TYPES
 // ============
 
-type Ok<D> = { ok: true; data: D; error: null };
-type NotOk<E> = { ok: false; data: null; error: E };
-type Status<D, E> = Ok<D> | NotOk<E>;
+export type Ok<D> = { ok: true; data: D; error: null };
+export type NotOk<E> = { ok: false; data: null; error: E };
+export type Status<D, E> = Ok<D> | NotOk<E>;
 
 // HELPER FUNCTIONS
 // ================
