@@ -24,7 +24,7 @@ import fs from "fs";
 
 let contents;
 try {
-  contents = readFile("foo.txt", "utf8");
+  contents = readFileSync("foo.txt", "utf8");
 } catch (error) {
   // Deal with `error` here.
 }
@@ -32,7 +32,7 @@ try {
 console.log(`Contents: ${contents}`);
 ```
 
-With `errou`, no more! It abstracts those ugly use cases of `try`/`catch` blocks for you. It supports both synchronous and asynchronous functions.
+With `errou`, no more. It abstracts those ugly use cases of `try`/`catch` blocks for you. It supports both synchronous and asynchronous functions – in this last case, the function _must_ return a Promise, which will be resolved by `errou`.
 
 ## Usage
 
@@ -40,7 +40,7 @@ With `errou`, no more! It abstracts those ugly use cases of `try`/`catch` blocks
 import fs from "fs";
 import errou from "errou";
 
-const call = errou(() => fs.readFile("foo.txt", "utf8"));
+const call = errou(() => fs.readFileSync("foo.txt", "utf8"));
 
 if (call.ok) {
   console.log(`Contents: ${call.data}`);
