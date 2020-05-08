@@ -27,9 +27,9 @@ describe('errou', () => {
     });
 
     it('returns the error throwed by the function in the error prop', () => {
-      const sut = errou<typeof willThrow, Error>(willThrow);
+      const sut = errou(willThrow);
       expect(sut.error).toBeInstanceOf(Error);
-      expect(sut.error!.message).toBe('err');
+      expect((sut.error as Error).message).toBe('err');
     });
 
     it('returns data:null when ok is false', () => {
@@ -66,9 +66,9 @@ describe('errou', () => {
       });
 
       it('returns the error throwed by the function in the error prop', async () => {
-        const sut = await errou<typeof willThrowAsync, Error>(willThrowAsync);
+        const sut = await errou(willThrowAsync);
         expect(sut.error).toBeInstanceOf(Error);
-        expect(sut.error!.message).toBe('err');
+        expect((sut.error as Error).message).toBe('err');
       });
 
       it('returns data:null when ok is false', async () => {

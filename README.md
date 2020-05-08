@@ -20,11 +20,11 @@ yarn add errou
 Have you ever written some code like:
 
 ```ts
-import fs from "fs";
+import fs from 'fs';
 
 let contents;
 try {
-  contents = readFileSync("foo.txt", "utf8");
+  contents = readFileSync('foo.txt', 'utf8');
 } catch (error) {
   // Deal with `error` here.
 }
@@ -37,10 +37,10 @@ With `errou`, no more. It abstracts those ugly use cases of `try`/`catch` blocks
 ## Usage
 
 ```ts
-import fs from "fs";
-import errou from "errou";
+import fs from 'fs';
+import errou from 'errou';
 
-const call = errou(() => fs.readFileSync("foo.txt", "utf8"));
+const call = errou(() => fs.readFileSync('foo.txt', 'utf8'));
 
 if (call.ok) {
   console.log(`Contents: ${call.data}`);
@@ -56,12 +56,12 @@ In the previous example, we passed an arrow function, which will be invoked by `
 ```ts
 function someFunction(a: string, b: number) {
   if (b % 2 !== 0) {
-    throw new Error("Only even numbers are allowed.");
+    throw new Error('Only even numbers are allowed.');
   }
   return { a, b };
 }
 
-const call = errou(someFunction, "Foo", 10);
+const call = errou(someFunction, 'Foo', 10);
 
 // call.ok
 // call.data
@@ -74,7 +74,7 @@ If the function has some [overloads](https://www.typescriptlang.org/docs/handboo
 
 ### The `error` type
 
-By default, `call.error` has the [`unknown`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type) type. You may [assert](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) that type to your desired `Error` instance or pass the correct `Error` type to the second generic that `errou` accepts.
+By default, `call.error` has the [`unknown`](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-3-0.html#new-unknown-top-type) type. You may [assert](https://www.typescriptlang.org/docs/handbook/basic-types.html#type-assertions) that type to your desired `Error` instance.
 
 <details>
 <summary>Asserting the <code>error</code> type</summary>
@@ -86,22 +86,6 @@ if (!call.ok) {
   console.log((call.error as Error).message);
 }
 ```
-
-</details>
-
-<details>
-
-<summary>Passing the correct <code>error</code> type as the second <code>errou</code> generic</summary>
-
-```ts
-const call = errou<typeof someFn, Error>(someFn, ...args);
-
-if (!call.ok) {
-  console.log(call.error.message);
-}
-```
-
-Note that you should pass the type of the function as the first generic.
 
 </details>
 
