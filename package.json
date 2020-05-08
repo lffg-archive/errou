@@ -41,7 +41,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn check:all"
     }
   },
   "lint-staged": {
@@ -49,7 +50,8 @@
       "yarn format:raw"
     ],
     "*.{js,jsx,ts,tsx}": [
-      "yarn lint:raw --fix"
+      "yarn lint:raw --fix",
+      "yarn test --findRelatedTests"
     ]
   },
   "publishConfig": {
